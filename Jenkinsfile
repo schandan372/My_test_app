@@ -5,32 +5,44 @@ pipeline{
   stages{
     stage('git Checkout'){
       steps{
-        gitCheckout()
+        script{
+          gitCheckout()
       }
+    }
     }
     stage('Build'){
       steps{
-        build()
+        script{
+          build()
+        }
       }
     }
      stage('Sonar scan'){
       steps{
-        sonarScan()
+        script{
+          sonarScan()
+        }
       }
     }
      stage('Artifact'){
       steps{
-        jfrog()
+        script{
+          jfrog()
+        }
       }
     }
      stage('Docker'){
       steps{
-        dockerBuild()
+        script{
+          dockerBuild()
+        }
       }
     }
      stage('Deploy'){
       steps{
-        deploy()
+        script{
+          deploy()
+        }
       }
     }
   }
